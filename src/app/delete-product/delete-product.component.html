@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6">
+        <div class="panel-body text-align-center">Are you sure?</div>
+        <div class="panel-footer clearfix">
+            <div class="text-align-center">
+
+                <!-- if 'Yes' button was clicked, delete the record and go back to records list -->
+                <button (click)="deleteProduct()" class="btn btn-danger m-r-5px">
+                    <span class="glyphicon glyphicon-ok-sign"></span> Yes
+                </button>
+
+                <!-- if 'No' button was clicked, go back to records list -->
+                <button (click)="readProducts()" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-remove-sign"></span> No
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3"></div>
+</div>
