@@ -1,0 +1,34 @@
+<div class="row m-b-18px">
+    <div class="col-md-12">
+        <a (click)="readProducts()" class='btn btn-primary pull-right'>
+            <span class='fa fa-list'></span> Read Products
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <!-- HTML table for displaying a product details -->
+    <table class='table table-hover table-responsive table-bordered'>
+
+        <tr>
+            <td class="w-40-pct">Name</td>
+            <td>{{product?.name}}</td>
+        </tr>
+
+        <tr>
+            <td>Price</td>
+            <td>&#36;{{product?.price}}</td>
+        </tr>
+
+        <tr>
+            <td>Description</td>
+            <td>{{product?.description}}</td>
+        </tr>
+
+        <tr>
+            <td>Category</td>
+            <td>{{product?.category_name}}</td>
+        </tr>
+
+    </table>
+</div>
