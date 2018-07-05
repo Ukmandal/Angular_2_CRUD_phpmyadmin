@@ -1,0 +1,98 @@
+<div class="row m-b-18px">
+  <div class="col-md-12">
+      <a (click)="readProducts()" class='btn btn-primary pull-right'>
+          <span class='fa fa-list'></span> Read Products
+      </a>
+  </div>
+</div>
+
+<!-- HTML form for creating a product -->
+<div class="row">
+
+<!--
+  1. Bind our HTML form to Angular using [formGroup]
+  2. If form was submitted, call createProduct() method of CreateProductComponent
+-->
+<form [formGroup]="create_product_form" (ngSubmit)="createProduct()">
+<table class="table table-hover table-responsive table-bordered">
+  <tr>
+      <td>Name</td>
+      <td>
+          <!-- Bind this input field to our 'angular form field' using formControlName -->
+          <input
+              formControlName="name"
+              name="name" type="text"
+              class="form-control" required />
+
+          <!-- show this error if the field is 'empty' and 'touched' -->
+          <div
+              *ngIf="create_product_form.get('name').touched && create_product_form.get('name').hasError('required')"
+              class="alert alert-danger">
+              Name is required.
+          </div>
+      </td>
+  </tr>
+
+  <tr>
+      <td>Price</td>
+      <td>
+          <input
+              formControlName="price"
+              type="number" name="price"
+              class="form-control" required />
+
+          <!-- show this error if the field is 'empty' and 'touched' -->
+          <div
+              *ngIf="create_product_form.get('price').touched && create_product_form.get('price').hasError('required')"
+              class="alert alert-danger">
+          Price is required.
+          </div>
+      </td>
+  </tr>
+
+  <tr>
+      <td>Description</td>
+      <td>
+          <textarea
+              formControlName="description"
+              name="description" class="form-control" required></textarea>
+
+              <!-- show this error if the field is 'empty' and 'touched' -->
+              <div
+                  *ngIf="create_product_form.get('description').touched && create_product_form.get('description').hasError('required')"
+                  class="alert alert-danger">
+                  Description is required.
+              </div>
+      </td>
+  </tr>
+
+  <tr>
+      <td>Category</td>
+      <td>
+          <select formControlName="category_id" name="category_id" class="form-control">
+              <option *ngFor="let category of categories" value="{{category.id}}">
+                  {{category.name}}
+              </option>
+          </select>
+          <!-- show this error if the field is 'empty' and 'touched' -->
+          <div
+              *ngIf="create_product_form.get('category_id').touched && create_product_form.get('category_id').hasError('required')"
+              class="alert alert-danger">
+              Category is required.
+          </div>
+      </td>
+  </tr>
+
+  <tr>
+      <td></td>
+      <td>
+          <!-- disable the submit button if the form is 'invalid' -->
+          <button class="btn btn-primary" type="submit" [disabled]="create_product_form.invalid">
+              <span class="glyphicon glyphicon-plus"></span> Create
+          </button>
+      </td>
+  </tr>
+</table>
+</form>
+
+</div>
