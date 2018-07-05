@@ -1,0 +1,38 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class='page-header'>
+                <h1>{{title}}</h1>
+            </div>
+        </div>
+    </div>
+
+    <app-create-product *ngIf="show_create_product_html" 
+        (show_read_products_event)="showReadProducts($event)">
+    </app-create-product>
+
+    <app-read-products *ngIf="show_read_products_html" 
+        (show_create_product_event)="showCreateProduct($event)" 
+        (show_read_one_product_event)="showReadOneProduct($event)"
+        (show_update_product_event)="showUpdateProduct($event)" 
+        (show_delete_product_event)="showDeleteProduct($event)">
+    </app-read-products>
+
+    <app-read-one-product *ngIf="show_read_one_product_html" 
+        (show_read_products_event)="showReadProducts($event)" 
+        [product_id]="product_id">
+    </app-read-one-product>
+
+    <app-update-product *ngIf="show_update_product_html" 
+        [product_id]="product_id" 
+        (show_read_products_event)="showReadProducts($event)">
+    </app-update-product>
+
+
+    <app-delete-product *ngIf="show_delete_product_html" 
+        [product_id]="product_id" 
+        (show_read_products_event)="showReadProducts($event)">
+    </app-delete-product>
+
+</div>
