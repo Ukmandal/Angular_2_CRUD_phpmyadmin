@@ -1,0 +1,98 @@
+<div class="row m-b-18px">
+  <div class="col-md-12">
+      <a (click)="readProducts()" class='btn btn-primary pull-right'>
+          <span class='fa fa-list'></span> Read Products
+      </a>
+  </div>
+</div>
+
+<div class="row">
+
+<!-- HTML form for creating a product -->
+<form [formGroup]="update_product_form" (ngSubmit)="updateProduct()">
+<table class='table table-hover table-responsive table-bordered'>
+
+  <tr>
+      <td>Name</td>
+      <td>
+          <input formControlName="name"
+              type='text' name='name'
+              class='form-control' required />
+
+          <!-- show this error if the field is 'touched' and 'empty' -->
+          <div
+              *ngIf="update_product_form.get('name').touched && update_product_form.get('name').hasError('required')"
+              class="alert alert-danger">
+              Name is required.
+          </div>
+      </td>
+  </tr>
+
+  <tr>
+      <td>Price</td>
+      <td>
+          <input
+              formControlName="price"
+              type='number' name='price'
+              class='form-control' required />
+
+          <!-- show this error if the field is 'touched' and 'empty' -->
+          <div
+              *ngIf="update_product_form.get('price').touched && update_product_form.get('price').hasError('required')"
+              class="alert alert-danger">
+          Price is required.
+          </div>
+      </td>
+  </tr>
+
+  <tr>
+      <td>Description</td>
+      <td>
+          <textarea
+              formControlName="description"
+              name='description' class='form-control'></textarea>
+
+          <!-- show this error if the field is 'touched' and 'empty' -->
+          <div
+              *ngIf="update_product_form.get('description').touched && update_product_form.get('description').hasError('required')"
+              class="alert alert-danger">
+          Description is required.
+          </div>
+      </td>
+  </tr>
+
+  <tr>
+      <td>Category</td>
+      <td>
+          <select formControlName="category_id" name='category_id' class='form-control'>
+              <option
+                  *ngFor="let category of categories"
+                  [selected]="category_id==category.id"
+                  value='{{category.id}}'>
+                  {{category.name}}
+              </option>
+          </select>
+
+          <!-- show this error if the field is 'touched' and 'empty' -->
+          <div
+              *ngIf="update_product_form.get('category_id').touched && update_product_form.get('category_id').hasError('required')"
+              class="alert alert-danger">
+              Category is required.
+          </div>
+      </td>
+  </tr>
+
+  <tr>
+      <td></td>
+      <td>
+          <!-- Submit buttons is [disabled] if form is invalid. -->
+          <button class="btn btn-primary" type="submit" [disabled]="update_product_form.invalid">
+              <span class="glyphicon glyphicon-edit"></span> Update
+          </button>
+      </td>
+  </tr>
+
+</table>
+</form>
+
+</div>
