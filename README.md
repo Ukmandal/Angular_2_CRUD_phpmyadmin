@@ -1,6 +1,7 @@
 # MegaAbleV1.7.2
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
+If you need database you can kindly contact me, i will; sure foovide you my database code. 
 
 ## Development server
 
